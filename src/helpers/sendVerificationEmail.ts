@@ -10,10 +10,9 @@ export async function sendVerificationEmail(
     try {
         await resend.emails.send({
             from: 'Acme <onboarding@resend.dev>',
-            to: ['delivered@resend.dev'],
-            subject: 'Hello world',
-            react: EmailTemplate({ firstName: 'John' }),
-          });
+            to: email,
+            subject: 'Mystry message | Verification code',
+            react: VerificationEmail({username,otp:verifyCode})})
         return {success: true, message:"Verification email send successfully"}
     }catch(emailError){
         console.error("Error sending verification email", emailError)
