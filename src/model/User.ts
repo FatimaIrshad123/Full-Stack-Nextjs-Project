@@ -1,3 +1,4 @@
+import { MONGODB_URL } from "@/secret";
 import mongoose, {Schema, Document} from "mongoose";
 
 
@@ -66,5 +67,5 @@ const UserSchema: Schema<User> = new Schema({
 })
 
 const UserModel = (mongoose.models.User as mongoose.Model<User>) || mongoose.model<User>("User",UserSchema)
-mongoose.connect(process.env.MONGODB_URL!)
+mongoose.connect(MONGODB_URL)
 export default UserModel;
