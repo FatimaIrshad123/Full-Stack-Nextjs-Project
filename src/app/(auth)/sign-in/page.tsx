@@ -5,6 +5,8 @@ import * as  z from "zod"
 import Link from "next/link"
 import { useState } from "react"
 import { useDebounceValue } from 'usehooks-ts'
+import { useToast } from "@/components/ui/use-toast"
+import { useRouter } from "next/navigation"
 
 const page = () => {
   const [username, setUsername] = useState('')
@@ -13,9 +15,12 @@ const page = () => {
   const [isSubmitting, setIsSubmitting] = useState(false) 
 
   const debouncedUsername = useDebounceValue(username,300)
+  const { toast } = useToast()
+  const router = useRouter()
+
   
   return (
-    <div></div>
+    <div>Page</div>
   )
 }
 
