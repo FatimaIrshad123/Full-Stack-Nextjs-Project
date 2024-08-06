@@ -11,6 +11,11 @@ import { useForm } from "react-hook-form"
 import { signUpSchema } from "@/schemas/signUpSchema"
 import axios, { AxiosError } from 'axios';
 import { ApiResponse } from "@/types/ApiResponse"
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Loader2 } from "lucide-react"
+
 
 const page = () => {
   const [username, setUsername] = useState('')
@@ -83,6 +88,67 @@ const page = () => {
             Join Mystery Message
           </h1>
           <p className="mb-4">Sign up to start your anonymus adventure </p>
+        </div>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Username</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Username" {...field}  onChange={(e) => {
+                      field.onChange(e)
+                      setUsername(e.target.value)
+                    }}/>
+                  </FormControl>
+                  <FormMessage/>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Email" {...field}/>
+                  </FormControl>
+                  <FormMessage/>
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="password"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Password</FormLabel>
+                  <FormControl>
+                    <Input type="password"
+                    placeholder="Password" {...field}/>
+                  </FormControl>
+                  <FormMessage/>
+                </FormItem>
+              )}
+            />
+            <Button type="submit" disabled={isSubmitting}>
+              {
+                isSubmitting ? (<>
+                <Loader2 className="mr-2 h-4 w-4 animate-spin"/>Please wait</>) : ("Signup")
+              }
+            </Button>
+          </form>
+        </Form>
+        <div className="text-center mt-4">
+          <p>
+            Already a member? {' '}
+            <Link href="/sign-in" className="hover:text-blue-800 text-blue-400">
+              Sign in
+            </Link>
+          </p>
         </div>
       </div>
     </div>
