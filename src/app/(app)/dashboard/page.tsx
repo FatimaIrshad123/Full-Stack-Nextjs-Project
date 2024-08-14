@@ -28,7 +28,8 @@ const page = () => {
     }
 
     const {data: session} = useSession()
-
+    //const session = useSession()
+    console.log('datasession',session)
     const form = useForm({
         resolver: zodResolver(acceptMessageSchema)
     })
@@ -107,12 +108,23 @@ const page = () => {
         }
     }    
 
-    const {username} = session?.user as User
-    
+    console.log('session',session)
+    const username = session?.user as User
+    // TODO: do more research
+    const baseUrl = `${window.location.protocol}//${window.location.host}`
+    const profileUrl = `${baseUrl} /u/${username}`
 
-    if (!session || !session.user){
-        return <div>Please Login</div>
+    const copyToClipboard = () => {
+      navigator.clipboard.writeText(profileUrl)
+      toast({
+        title:  "URL copied",
+        description: "Profile URL has been copied to clipboard"
+      })
     }
+
+    //if (!session || !session.user){
+      //  return <div>Please Login</div>
+    //}
 
     return (
         <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-white rounded w-full max-w-6xl">

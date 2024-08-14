@@ -92,15 +92,17 @@ const page = () => {
               )}
             />
             <Button type="submit">
-              Signin
+            <Link href="/dashboard" className="hover:text-blue-800">
+              Sign in
+            </Link>
             </Button>
           </form>
         </Form>
         <div className="text-center mt-4">
           <p>
             Already a member? {' '}
-            <Link href="/sign-in" className="hover:text-blue-800 text-blue-400">
-              Sign in
+            <Link href="/sign-up" className="hover:text-blue-800 text-blue-400">
+              Sign up
             </Link>
           </p>
         </div>
