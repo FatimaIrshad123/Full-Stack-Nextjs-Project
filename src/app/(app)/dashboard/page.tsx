@@ -42,6 +42,7 @@ const page = () => {
         try {
            const response = await axios.get<ApiResponse>('/api/accept-messages')
            setValue('acceptMessages', response.data.isAcceptingMessage)
+                console.log("response", response)
         }catch(error){
             const axiosError = error as AxiosError<ApiResponse>
             toast ({
@@ -53,7 +54,7 @@ const page = () => {
             setIsSwitchLoading(false)
         }
     },[setValue])
-
+//console.log('fetchAcceptMessage',fetchAcceptMessage)
     const fetchMessages = useCallback(async(refresh: boolean = false) => {
         setIsLoading(true)
         setIsSwitchLoading(false)
