@@ -9,9 +9,10 @@ export async function POST(request: Request) {
   await dbConnect();
 
   const session = await getServerSession(authOptions);
-  console.log(session)
   const user: User = session?.user;
+  
   if (!session || !session.user) {
+    //console.log(session)
     return Response.json(
       { success: false, message: 'Not authenticated' },
       { status: 401 }

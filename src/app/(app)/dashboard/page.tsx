@@ -86,7 +86,7 @@ const page = () => {
         fetchMessages()
         fetchAcceptMessage()
     },[session, setValue, fetchAcceptMessage, fetchMessages])
-
+//console.log(fetchMessages)
     // handle switch change
     const handleSwitchChange = async() => {
         try{
@@ -123,9 +123,9 @@ const page = () => {
       })
     }
 
-    //if (!session || !session.user){
-      //  return <div>Please Login</div>
-    //}
+    if (!session || !session.user){
+        return <div>Please Login</div>
+    }
 
     return (
         <div className="my-8 mx-4 md:mx-8 lg:mx-auto p-6 bg-white rounded w-full max-w-6xl">
