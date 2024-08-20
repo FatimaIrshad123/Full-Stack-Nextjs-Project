@@ -44,6 +44,7 @@ const page = () => {
           setUsernameMessage('')
           try {
             const response = await axios.get(`/api/check-username-unique?username=${username}`)
+            //setUsername(username)
             setUsernameMessage(response.data.message)
           }catch(error){
             const axiosError = error as AxiosError<ApiResponse>
@@ -55,12 +56,13 @@ const page = () => {
       }
       checkUsernameUnique()
     }, [username])
-
+//console.log(username)
     const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
       setIsSubmitting(true)
       console.log('signin data', data)
       try {
         const response = await axios.post<ApiResponse>('/api/sign-up', data)
+        console.log('response',response)
         toast({
           title: 'Success',
           description: response.data.message

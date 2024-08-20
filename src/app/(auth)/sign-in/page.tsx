@@ -91,10 +91,8 @@ const page = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit">
-            <Link href="/dashboard" className="hover:text-blue-800">
-              Sign in
-            </Link>
+            <Button type="submit" >
+            Signin
             </Button>
           </form>
         </Form>
