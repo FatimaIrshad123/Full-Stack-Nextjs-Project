@@ -29,7 +29,7 @@ const page = () => {
 
     const {data: session} = useSession()
     //const session = useSession()
-    console.log('datasession',session)
+    //console.log('datasession',session)
     const form = useForm({
         resolver: zodResolver(acceptMessageSchema)
     })

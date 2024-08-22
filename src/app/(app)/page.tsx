@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/carousel"
 import messages from '../../messages.json'
 import Autoplay from "embla-carousel-autoplay"
+import Link from "next/link"
 
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
       <section className="text-center mb-8 md:mb-12">
         <h1 className="text-3xl md:text-5xl font-bold">Dive into the world of Anonymus</h1>
         <p className="mt-3 md:mt-4 text-base md:text-lg">Explore mystery message - Where your identity remain a secret</p>
+        <p>Click to visit <Link href='/dashboard'>Dashboard</Link></p>
       </section>
       <Carousel 
       plugins={[Autoplay({delay: 2000})]}
