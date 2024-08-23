@@ -58,9 +58,11 @@ const page = () => {
     const fetchMessages = useCallback(async(refresh: boolean = false) => {
         setIsLoading(true)
         setIsSwitchLoading(false)
+        console.log('abcd')
         try {
             const response = await axios.get<ApiResponse>('/api/get-messages')
             setMessages(response.data.messages || [])
+            //console.log('abcd',response)
             if (refresh){
                 toast ({
                     title: "Rereshed Messages",
@@ -110,7 +112,7 @@ const page = () => {
     }    
 
     console.log('session',session)
-    const username = session?.user as User
+    const username = session?.user.username 
     // TODO: do more research
     const baseUrl = `${window.location.protocol}//${window.location.host}`
     const profileUrl = `${baseUrl} /u/${username}`
