@@ -11,7 +11,6 @@ import { ApiResponse } from "@/types/ApiResponse"
 import { zodResolver } from "@hookform/resolvers/zod"
 import axios, { AxiosError } from "axios"
 import { Loader2, RefreshCcw } from "lucide-react"
-import { User } from "next-auth"
 import { useSession } from "next-auth/react"
 import { useCallback, useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
@@ -28,8 +27,6 @@ const page = () => {
     }
 
     const {data: session} = useSession()
-    //const session = useSession()
-    //console.log('datasession',session)
     const form = useForm({
         resolver: zodResolver(acceptMessageSchema)
     })
@@ -54,15 +51,12 @@ const page = () => {
             setIsSwitchLoading(false)
         }
     },[setValue])
-//console.log('fetchAcceptMessage',fetchAcceptMessage)
     const fetchMessages = useCallback(async(refresh: boolean = false) => {
         setIsLoading(true)
         setIsSwitchLoading(false)
-        console.log('abcd')
         try {
             const response = await axios.get<ApiResponse>('/api/get-messages')
             setMessages(response.data.messages || [])
-            //console.log('abcd',response)
             if (refresh){
                 toast ({
                     title: "Rereshed Messages",
@@ -88,7 +82,7 @@ const page = () => {
         fetchMessages()
         fetchAcceptMessage()
     },[session, setValue, fetchAcceptMessage, fetchMessages])
-//console.log(fetchMessages)
+
     // handle switch change
     const handleSwitchChange = async() => {
         try{

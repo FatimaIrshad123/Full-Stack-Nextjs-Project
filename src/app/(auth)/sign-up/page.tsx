@@ -4,14 +4,14 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import * as  z from "zod"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { useDebounceValue, useDebounceCallback } from 'usehooks-ts'
+import { useDebounceCallback } from 'usehooks-ts'
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 import { useForm } from "react-hook-form"
 import { signUpSchema } from "@/schemas/signUpSchema"
 import axios, { AxiosError } from 'axios';
 import { ApiResponse } from "@/types/ApiResponse"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 import { Loader2 } from "lucide-react"
@@ -44,7 +44,6 @@ const page = () => {
           setUsernameMessage('')
           try {
             const response = await axios.get(`/api/check-username-unique?username=${username}`)
-            //setUsername(username)
             setUsernameMessage(response.data.message)
           }catch(error){
             const axiosError = error as AxiosError<ApiResponse>
@@ -56,7 +55,6 @@ const page = () => {
       }
       checkUsernameUnique()
     }, [username])
-//console.log(username)
     const onSubmit = async (data: z.infer<typeof signUpSchema>) => {
       setIsSubmitting(true)
       console.log('signin data', data)
