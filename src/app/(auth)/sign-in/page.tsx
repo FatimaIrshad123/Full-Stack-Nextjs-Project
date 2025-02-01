@@ -54,7 +54,7 @@ const page = () => {
     }
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+    <div className="flex justify-center items-center min-h-screen bg-cyan-700">
       <div className="w-full max-w-md p-8 rounded-lg shadow-md bg-white space-y-8">
         <div className="text-center">
           <h1 className="text-4xl tracking-tight lg:text-5xl mb-6 font-extrabold">
